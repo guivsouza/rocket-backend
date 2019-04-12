@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const File = new mongoose.Schema(
     {
@@ -19,8 +19,9 @@ const File = new mongoose.Schema(
 );
 
 File.virtual("url").get(function () {
-    const url = process.env.URL || 'http:localhost:99';
+    const url = process.env.URL || "http:localhost:99";
+    
     return `${url}/files/${encodeURIComponent(this.path)}`;
 });
 
-module.exports = mongoose.model('File', File);
+module.exports = mongoose.model("File", File);
